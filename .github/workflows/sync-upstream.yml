@@ -1,9 +1,9 @@
-name: Sync upstream
+name: Sync upstream automatically
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:             # 允许手动触发
+    - cron: '0 * * * *'          # 每天 UTC 00:00（北京时间早上 8:00）运行一次
+  workflow_dispatch:             # 允许手动触发（推荐先手动跑一次测试）
 
 jobs:
   sync:
@@ -12,12 +12,15 @@ jobs:
       - name: Checkout my fork
         uses: actions/checkout@v4
         with:
-          ref: main                    # 改成你主要分支的名字（main 或 master）
+          ref: main                # ← 改成你 fork 的主要分支（main/master 等）
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Sync with upstream
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1   # 建议用最新 patch 版 v3.4.1
         with:
-          target: ${{ github.repository }}   # 自动使用当前仓库
-          upstream: 'KuekHaoYang/KVideo'             # ← 这里改成上游仓库，例如：vercel/next.js
-          upstream_branch: main              # 上游分支名
-          target_branch: main                # 你的分支名
+          target_sync_branch: main                  # ← 改成你 fork 要同步的分支
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: KuekHaoYang/KVideo            # ← 必须改！上游仓库，例如：vercel/next.js
+          upstream_sync_branch: main                # ← 上游的分支名
+          # upstream_repo_access_token: ${{ secrets.MY_PAT }}   # 只在私有上游时取消注释
+          test_mode: true                           # 第一次测试时打开，确认没问题再关
