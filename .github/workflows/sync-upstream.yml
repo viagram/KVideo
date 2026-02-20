@@ -23,4 +23,4 @@ jobs:
           upstream_sync_repo: KuekHaoYang/KVideo            # ← 必须改！上游仓库，例如：vercel/next.js
           upstream_sync_branch: main                # ← 上游的分支名
           # upstream_repo_access_token: ${{ secrets.MY_PAT }}   # 只在私有上游时取消注释
-          test_mode: true                           # 第一次测试时打开，确认没问题再关
+          # test_mode: true                           # 第一次测试时打开，确认没问题再关
