@@ -2,7 +2,7 @@ name: Sync upstream automatically
 
 on:
   schedule:
-    - cron: '0 * * * *'          # 每天 UTC 00:00（北京时间早上 8:00）运行一次
+    - cron: '0 */6 * * *'
   workflow_dispatch:             # 允许手动触发（推荐先手动跑一次测试）
 
 jobs:
