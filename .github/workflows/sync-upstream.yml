@@ -1,5 +1,8 @@
 name: Sync upstream automatically
 
+env:
+  TZ: Asia/Shanghai
+
 on:
   schedule:
     - cron: '0 */6 * * *'
