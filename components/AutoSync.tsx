@@ -25,18 +25,17 @@ export function AutoSync() {
     // 1. 刚打开网页时，主动从云端拉取一次最新数据
     pullFromCloud();
 
-    // 2. 监听本地数据的变化，如果用户看了新视频或收藏了，延迟 5 秒后推送到云端
+    // 2. 监听本地数据的变化，如果数据变了，延迟 5 秒后推送到云端
     const debouncedPush = debounce(pushToCloud, 5000);
 
-    const unsubHistory = useHistoryStore.subscribe(
-      (state) => state.viewingHistory,
-      () => debouncedPush()
-    );
+    // 修改点在这里：Zustand v4/v5 默认 subscribe 只接受一个参数
+    const unsubHistory = useHistoryStore.subscribe(() => {
+      debouncedPush();
+    });
 
-    const unsubFavorites = useFavoritesStore.subscribe(
-      (state) => state.favorites,
-      () => debouncedPush()
-    );
+    const unsubFavorites = useFavoritesStore.subscribe(() => {
+      debouncedPush();
+    });
 
     return () => {
       unsubHistory();
