@@ -22,8 +22,14 @@ const BadgeComponent = memo(function Badge({
 
   const iconElement = icon && (
     <span
-      className={`inline-flex items-center justify-center ${iconPosition === 'left' ? 'mr-1' : 'ml-1'}`}
-      style={{ width: '0.875em', height: '0.875em' }}
+      className={`inline-flex items-center justify-center ${iconPosition === 'left' ? 'mr-1' : 'ml-1'
+        }`}
+      style={{
+        width: '0.875em',
+        height: '0.875em',
+        transform: 'translateZ(0)',
+        willChange: 'auto',
+      }}
     >
       {icon}
     </span>
@@ -39,6 +45,10 @@ const BadgeComponent = memo(function Badge({
         ${variants[variant]}
         ${className}
       `}
+      style={{
+        transform: 'translateZ(0)',
+        willChange: 'auto',
+      }}
     >
       {icon && iconPosition === 'left' && iconElement}
       {children}
@@ -47,4 +57,7 @@ const BadgeComponent = memo(function Badge({
   );
 });
 
+// Export both named and default for compatibility
 export const Badge = BadgeComponent;
+
+
