@@ -10,6 +10,7 @@
 
 **在线体验：[https://kvideo.pages.dev/](https://kvideo.pages.dev/)**
 
+[![Version](https://img.shields.io/badge/Version-4.6.0-blue?style=for-the-badge)](https://github.com/KuekHaoYang/KVideo)
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
@@ -24,11 +25,12 @@
 
 项目的视觉设计基于 **"Liquid Glass"** 设计系统，这是一套融合了以下特性的现代化 UI 设计语言：
 
-- **玻璃拟态效果**：通过 `backdrop-filter` 实现的磨砂半透明效果，让 UI 元素如同真实的玻璃材质
-- **通用柔和度**：统一使用 `rounded-2xl` 和 `rounded-full` 两种圆角半径，创造和谐的视觉体验
-- **光影交互**：悬停和聚焦状态下的内发光效果，模拟光线被"捕获"的物理现象
-- **流畅动画**：基于物理的 `cubic-bezier` 曲线，实现自然的加速和减速过渡
-- **深度层级**：清晰的 z-axis 层次结构，增强空间感和交互反馈
+- **玻璃拟态效果**：通过 `backdrop-filter: blur(25px) saturate(180%)` 实现的磨砂半透明效果，让 UI 元素如同真实的玻璃材质，动态反射和折射背景内容
+- **通用柔和度**：严格使用 `rounded-2xl`（1.5rem）和 `rounded-full`（9999px）两种圆角半径，创造和谐统一的视觉体验
+- **光影交互**：悬停和聚焦状态下的内发光效果（lensing），模拟光线被"捕获"的物理现象，配合动态阴影响应用户交互
+- **流畅动画**：基于物理的 `cubic-bezier(0.2, 0.8, 0.2, 1)` 曲线，实现自然的加速和减速过渡
+- **深度层级**：清晰的 z-axis 层次结构，主交互层始终在视觉最前方，背景元素通过更多模糊和更低饱和度自然后退
+- **固定渐变背景**：`background-attachment: fixed` 的渐变背景，让玻璃效果在滚动时保持一致的视觉效果
 
 ## 核心功能
 

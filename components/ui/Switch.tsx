@@ -25,11 +25,11 @@ export function Switch({
     return (
         <label
             className={`
-        switch relative inline-flex items-center cursor-pointer 
-        h-[30px] w-[50px] shrink-0
-        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-        ${className}
-      `}
+                relative inline-flex items-center cursor-pointer
+                h-[30px] w-[50px] shrink-0
+                ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+                ${className}
+            `}
         >
             <input
                 type="checkbox"
@@ -41,20 +41,22 @@ export function Switch({
             />
             <div
                 className={`
-          switch-slider w-full h-full rounded-[var(--radius-full)] 
-          bg-[color-mix(in_srgb,var(--text-color)_20%,transparent)] 
-          peer-checked:bg-[var(--accent-color)] 
-          transition-colors duration-[0.4s] cubic-bezier(0.2,0.8,0.2,1) 
-          before:content-[''] before:absolute before:h-[26px] before:w-[26px] 
-          before:left-[2px] before:bottom-[2px] 
-          before:bg-white before:rounded-[var(--radius-full)] 
-          before:transition-transform before:duration-[0.4s] 
-          before:cubic-bezier(0.2,0.8,0.2,1) 
-          before:shadow-[0_1px_3px_rgba(0,0,0,0.2)] 
-          peer-checked:before:translate-x-[20px]
-          active:before:scale-95
-        `}
-            ></div>
+                    w-full h-full rounded-[var(--radius-full)]
+                    bg-[color-mix(in_srgb,var(--text-color)_20%,transparent)]
+                    peer-checked:bg-[var(--accent-color)]
+                    transition-[background-color] duration-[0.4s]
+                    [transition-timing-function:cubic-bezier(0.2,0.8,0.2,1)]
+                    before:content-[''] before:absolute
+                    before:h-[26px] before:w-[26px]
+                    before:left-[2px] before:bottom-[2px]
+                    before:bg-white before:rounded-[var(--radius-full)]
+                    before:transition-transform before:duration-[0.4s]
+                    before:[transition-timing-function:cubic-bezier(0.2,0.8,0.2,1)]
+                    before:shadow-[0_1px_3px_rgba(0,0,0,0.2)]
+                    peer-checked:before:translate-x-[20px]
+                    active:before:scale-95
+                `}
+            />
         </label>
     );
 }

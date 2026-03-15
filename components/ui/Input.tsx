@@ -18,21 +18,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           className={`
             w-full px-4 py-3 md:px-6 md:py-4
-            text-base md:text-[var(--text-color)]
+            text-base
             bg-[var(--glass-bg)]
-            backdrop-blur-[10px]
-            saturate-[150%]
+            backdrop-blur-[10px] saturate-[150%]
             [-webkit-backdrop-filter:blur(10px)_saturate(150%)]
-            border
-            border-[var(--glass-border)]
+            border border-[var(--glass-border)]
             rounded-[var(--radius-2xl)]
             text-[var(--text-color)]
             placeholder:text-[var(--text-color-secondary)]
             focus:outline-none
             focus:border-[var(--accent-color)]
             focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent-color)_30%,transparent)]
-            transition-all
-            duration-[var(--transition-fluid)]
+            transition-all duration-[0.4s]
+            [transition-timing-function:cubic-bezier(0.2,0.8,0.2,1)]
             touch-manipulation
             ${error ? 'border-red-500' : ''}
             ${className}
@@ -48,4 +46,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = 'Input';
-

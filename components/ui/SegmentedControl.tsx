@@ -38,7 +38,6 @@ export function SegmentedControl<T extends string>({
         };
 
         updateIndicator();
-        // Update on window resize as well
         window.addEventListener('resize', updateIndicator);
         return () => window.removeEventListener('resize', updateIndicator);
     }, [value, options]);
@@ -47,14 +46,19 @@ export function SegmentedControl<T extends string>({
         <div
             ref={containerRef}
             className={`
-                relative flex p-1 bg-[var(--glass-bg)] backdrop-blur-xl 
-                border border-[var(--glass-border)] rounded-[var(--radius-2xl)] 
-                shadow-[var(--shadow-sm)] ${className}
+                relative flex p-1
+                bg-[var(--glass-bg)]
+                backdrop-blur-[25px] saturate-[180%]
+                [-webkit-backdrop-filter:blur(25px)_saturate(180%)]
+                border border-[var(--glass-border)]
+                rounded-[var(--radius-2xl)]
+                shadow-[var(--shadow-sm)]
+                ${className}
             `}
         >
             {/* Sliding Indicator */}
             <div
-                className="absolute top-1 bottom-1 bg-[var(--accent-color)] rounded-[calc(var(--radius-2xl)-4px)] shadow-[0_2px_8px_rgba(0,122,255,0.3)] transition-all duration-300 cubic-bezier(0.2, 0.8, 0.2, 1)"
+                className="absolute top-1 bottom-1 bg-[var(--accent-color)] rounded-[calc(var(--radius-2xl)-4px)] shadow-[0_2px_8px_color-mix(in_srgb,var(--accent-color)_30%,transparent)] transition-all duration-300 [transition-timing-function:cubic-bezier(0.2,0.8,0.2,1)]"
                 style={{
                     left: `${indicatorStyle.left}px`,
                     width: `${indicatorStyle.width}px`,
@@ -68,8 +72,13 @@ export function SegmentedControl<T extends string>({
                     data-value={option.value}
                     onClick={() => onChange(option.value)}
                     className={`
-                        relative z-10 flex-1 py-2 px-4 text-sm font-semibold transition-colors duration-200
-                        ${value === option.value ? 'text-white' : 'text-[var(--text-color-secondary)] hover:text-[var(--text-color)]'}
+                        relative z-10 flex-1 py-2 px-4
+                        text-sm font-semibold
+                        transition-colors duration-200
+                        ${value === option.value
+                            ? 'text-white'
+                            : 'text-[var(--text-color-secondary)] hover:text-[var(--text-color)]'
+                        }
                     `}
                 >
                     {option.label}
